@@ -1,0 +1,6 @@
+#cards-container {
+  margin-top: 5rem;
+  overflow-x: scroll;
+  display: grid;
+  justify-content: center;
+}/*# sourceMappingURL=main.css.map */

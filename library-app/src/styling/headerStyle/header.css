@@ -1,6 +1,7 @@
 #header {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
+  align-items: center;
   background-color: #1d3557;
 }
 #header #Header-Logo {
@@ -10,7 +11,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 91rem;
 }
 #header #navigation-section #navigation-items-container {
   display: flex;
@@ -28,4 +28,22 @@
 }
 #header #navigation-section #navigation-items-container .navigation-items:hover {
   color: #569cfe;
+}
+#header #Signup-Logout-button {
+  opacity: 0.7;
+  transition: all 0.5s;
+  background-color: white;
+  color: black;
+  width: 5rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-right: 5rem;
+  cursor: pointer;
+}
+#header #Signup-Logout-button:hover {
+  background-color: #569cfe;
 }/*# sourceMappingURL=header.css.map */

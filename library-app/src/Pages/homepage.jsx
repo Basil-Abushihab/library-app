@@ -3,7 +3,6 @@ import Main from "../Components/MainComponent/mainComponent";
 function HomeScreen(){
     return (
         <div>
-        <Header/>
         <Main/>
         </div>
     )

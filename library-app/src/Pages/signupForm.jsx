@@ -1,7 +1,7 @@
 import "../styling/signupFormStyle/signup.css";
 import { useNavigate } from "react-router-dom";
 import User from "../models/userModel.js";
-import { Context } from "../Components/contextComponent/context.jsx";
+import { Context } from "./Components/contextComponent/context.jsx";
 import { useContext } from "react";
 function Signup() {
   let navigate = useNavigate();

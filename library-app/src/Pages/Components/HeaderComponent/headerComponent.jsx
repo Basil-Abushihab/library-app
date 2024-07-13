@@ -1,4 +1,4 @@
-import "../../styling/headerStyle/header.css";
+import "../../../styling/headerStyle/header.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../contextComponent/context";
@@ -23,7 +23,10 @@ function Header() {
           </Link>
 
           <Link to="/contact" className="navigation-items">
-            <li>Contact</li>{" "}
+            <li>Contact</li>
+          </Link>
+          <Link to="/catalouge" className="navigation-items">
+            <li>Catalouge</li>
           </Link>
         </ul>
       </div>

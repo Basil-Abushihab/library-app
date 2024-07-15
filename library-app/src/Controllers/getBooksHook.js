@@ -5,9 +5,13 @@ import getBooks from "./getBooks";
 const useBooks = (url) => {
   const [books, setBooks] = useState(null);
 
-  useEffect(async () => {
-    setBooks(await getBooks(url));
-    console.log(books);
+  useEffect(() => {
+    const getDataImplementation = async () => {
+      setBooks(await getBooks(url));
+      console.log(books);
+    };
+
+    getDataImplementation();
   }, [url]);
   return [books, setBooks];
 };

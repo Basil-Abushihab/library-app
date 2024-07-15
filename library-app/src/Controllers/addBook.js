@@ -9,7 +9,6 @@ function addBook(url, data) {
       }
     })
     .catch((error) => {
-      console.log(data);
       console.log(error);
     });
 }

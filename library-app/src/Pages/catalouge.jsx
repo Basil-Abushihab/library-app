@@ -1,16 +1,18 @@
 import useBooks from "../Controllers/getBooksHook";
 import { databaseURL } from "../firebase-config/firebase-config";
-import "../styling/catalougeStyle/catalougeStyle.css";
+
 import { CircularProgress } from "@mui/material";
 import { Container } from "@mui/material";
 import BooksCards from "./Components/catalougePageComponents/booksCardsComponent";
-import "../styling/catalougeStyle/catalougeStyle.css";
+
 import Books from "../models/booksModel";
 import addBook from "../Controllers/addBook";
 import getBooks from "../Controllers/getBooks";
+import { useState } from "react";
 
 const CatalougePage = () => {
   const [booksData, setBooks] = useBooks(databaseURL + "/books.json");
+
   const addBookFormController = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -23,10 +25,9 @@ const CatalougePage = () => {
       isDeleted: false,
     });
 
-    addBook(databaseURL + "books/" + book.id + ".json", book);
-
-    setBooks(await getBooks(databaseURL + "/books.json"));
-    console.log(booksData);
+    await addBook(databaseURL + "books/" + book.id + ".json", book);
+    let changedBooks = await getBooks(databaseURL + "/books.json");
+    setBooks(changedBooks);
   };
 
   if (booksData == null) {
@@ -63,13 +64,11 @@ const CatalougePage = () => {
         }}
       >
         {booksData.map((book) => {
-          console.log(book.isDeleted);
           if (!book.isDeleted) {
             return <BooksCards key={book.id} book={book} />;
           }
         })}
       </Container>
-
       <Container
         sx={{
           display: "flex",
@@ -85,46 +84,40 @@ const CatalougePage = () => {
           boxShadow: "2px 2px black",
         }}
       >
-        <h1>Add book</h1>
-        <form onSubmit={addBookFormController} id="book-form">
-          <br />
-          <label className="book-fields-labels">Title</label>
-          <br />
-
+        <h1 className="text-3xl font-bold">Add book</h1>
+        <form
+          onSubmit={addBookFormController}
+          id="book-form"
+          className="flex flex-col"
+        >
+          <label className="text-white text-base mb-2">Title</label>
           <input
             type="text"
-            className="book-fields"
+            className="border-none rounded-md px-3 py-2 bg-blue-900 w-80 h-10 text-white mb-4"
             placeholder="Please input book title"
             name="title"
           />
-          <br />
-          <br />
-          <label className="book-fields-labels">Author</label>
-
-          <br />
-
+          <label className="text-white text-base mb-2">Author</label>
           <input
             type="text"
-            className="book-fields"
+            className="border-none rounded-md px-3 py-2 bg-blue-900 w-80 h-10 text-white mb-4"
             placeholder="Please input book author"
             name="author"
           />
-          <br />
-          <br />
-          <label className="book-fields-labels">isbn</label>
-
-          <br />
-
+          <label className="text-white text-base mb-2">ISBN</label>
           <input
             type="text"
-            className="book-fields"
+            className="border-none rounded-md px-3 py-2 bg-blue-900 w-80 h-10 text-white mb-4"
             placeholder="Please input book isbn"
             name="isbn"
           />
-          <br />
-          <br />
-          <div>
-            <button id="book-submit-button">Submit</button>
+          <div className="flex justify-end items-center my-8">
+            <button
+              id="book-submit-button"
+              className="border-none w-20 h-8 text-center rounded-md bg-white text-black"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </Container>

@@ -7,7 +7,7 @@ export const ContextProvider = ({ children }) => {
   const [booksData,setBooks]=useState(null)
 
   return (
-    <Context.Provider value={{ currentUser, setUser }}>
+    <Context.Provider value={{ currentUser, setUser,booksData,setBooks }}>
       {children}
     </Context.Provider>
   );
